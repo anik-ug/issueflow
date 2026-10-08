@@ -32,3 +32,17 @@ Issue list requests support `search`, `status`, `priority`, `sort`, `order`,
 `page`, and `limit`. MongoDB must be running locally or `MONGODB_URI` must
 point to an accessible database. In production, use a long random JWT secret,
 HTTPS, a specific client origin, and a managed MongoDB deployment.
+
+## AI-Assisted Development
+
+This project was developed with CodeZero as the AI-assisted development environment.
+
+### How AI was used
+
+- Generated the initial MERN project architecture and folder structure.
+- Implemented JWT authentication and protected API routes.
+- Built issue CRUD APIs, dashboard statistics, filtering, and search.
+- Developed React pages and reusable UI components.
+- Assisted with debugging, dependency updates, linting, testing, and build verification.
+
+CodeZero was used for implementation, verification, and debugging while reviewing and approving the generated changes.
