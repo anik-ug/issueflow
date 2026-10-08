@@ -66,3 +66,12 @@ HTTPS, a specific client origin, and a managed MongoDB deployment.
 ### Issues I hit along the way
 
 - Code0 initially could not find an AI provider, and its tool connection failed with Codex. I fixed this by installing the Copilot CLI, logging in and switching the agent to Copilot.
+## Screenshots
+
+| Login | Dashboard |
+|---|---|
+| ![Login](docs/screenshots/login.png) | ![Dashboard](docs/screenshots/dashboard.png) |
+
+| Issues | Mobile |
+|---|---|
+| ![Issues](docs/screenshots/issues.png) | ![Mobile](docs/screenshots/mobile.png) |
