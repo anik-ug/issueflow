@@ -2,8 +2,8 @@ import { z } from 'zod';
 
 const optionalId = z.string().regex(/^[a-f\d]{24}$/i).nullable().optional();
 export const issueSchema = z.object({
-  title: z.string().trim().min(1).max(160),
-  description: z.string().trim().min(1).max(5000),
+  title: z.string({ required_error: 'Title is required' }).trim().min(1, 'Title is required').max(120, 'Title must be 120 characters or fewer'),
+  description: z.string().trim().min(1).max(2000, 'Description must be 2000 characters or fewer'),
   status: z.enum(['Todo', 'In Progress', 'Done']).optional(),
   priority: z.enum(['Low', 'Medium', 'High']).optional(),
   assignee: optionalId,

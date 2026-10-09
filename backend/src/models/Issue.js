@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
 const issueSchema = new mongoose.Schema({
-  title: { type: String, required: true, trim: true, maxlength: 160 },
-  description: { type: String, required: true, trim: true, maxlength: 5000 },
+  title: { type: String, required: true, trim: true, maxlength: 120 },
+  description: { type: String, required: true, trim: true, maxlength: 2000 },
   status: { type: String, enum: ['Todo', 'In Progress', 'Done'], default: 'Todo', index: true },
   priority: { type: String, enum: ['Low', 'Medium', 'High'], default: 'Medium', index: true },
   assignee: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null, index: true },
