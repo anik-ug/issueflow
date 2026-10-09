@@ -5,12 +5,22 @@ import { asyncHandler } from '../utils/asyncHandler.js';
 
 const populate = (query) => query.populate('assignee', 'name email').populate('createdBy', 'name email');
 
-export const listIssues = asyncHandler(async (req, res) => {
-  const { search, status, priority, sort, order, page, limit } = req.query;
+const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+export const buildIssueFilter = ({ search, status, priority }) => {
   const filter = {};
   if (status) filter.status = status;
   if (priority) filter.priority = priority;
-  if (search) filter.$text = { $search: search };
+  if (search) {
+    const pattern = new RegExp(escapeRegex(search), 'i');
+    filter.$or = [{ title: pattern }, { description: pattern }];
+  }
+  return filter;
+};
+
+export const listIssues = asyncHandler(async (req, res) => {
+  const { search, status, priority, sort, order, page, limit } = req.query;
+  const filter = buildIssueFilter({ search, status, priority });
   const [items, total] = await Promise.all([
     populate(Issue.find(filter).sort({ [sort]: order === 'asc' ? 1 : -1 }).skip((page - 1) * limit).limit(limit)),
     Issue.countDocuments(filter)
