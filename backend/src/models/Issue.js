@@ -10,7 +10,6 @@ const issueSchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true, index: true }
 }, { timestamps: true });
 
-issueSchema.index({ title: 'text', description: 'text' });
 issueSchema.index({ createdAt: -1 });
 
 export const Issue = mongoose.model('Issue', issueSchema);
