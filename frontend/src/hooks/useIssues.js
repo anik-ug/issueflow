@@ -11,6 +11,13 @@ export function useIssues() {
     try { setData(await api(`/issues?${params}`)); setState({ loading: false, error: '' }); } catch (error) { setState({ loading: false, error: error.message }); }
   }, [query]);
   useEffect(() => { load(); }, [load]);
-  const remove = async (id) => { await api(`/issues/${id}`, { method: 'DELETE' }); load(); };
+  const remove = async (id) => {
+    try {
+      await api(`/issues/${id}`, { method: 'DELETE' });
+      await load();
+    } catch (error) {
+      setState({ loading: false, error: error.message });
+    }
+  };
   return { ...data, query, setQuery, ...state, reload: load, remove };
 }
