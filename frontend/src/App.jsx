@@ -8,5 +8,5 @@ import { IssuesPage } from './pages/IssuesPage.jsx';
 import { IssueForm } from './components/IssueForm.jsx';
 
 export function App() {
-  return <BrowserRouter><AuthProvider><Routes><Route path="/login" element={<AuthPage mode="login" />} /><Route path="/register" element={<AuthPage mode="register" />} /><Route element={<ProtectedRoute />}><Route element={<Layout />}><Route index element={<DashboardPage />} />  <Route path="/issues" element={<IssuesPage />} /><Route path="/issues/new" element={<IssueForm />} /></Route></Route><Route path="*" element={<Navigate to="/" replace />} /></Routes></AuthProvider></BrowserRouter>;
+  return <BrowserRouter><AuthProvider><Routes><Route path="/login" element={<AuthPage mode="login" />} /><Route path="/register" element={<AuthPage mode="register" />} /><Route element={<ProtectedRoute />}><Route element={<Layout />}><Route index element={<DashboardPage />} />  <Route path="/issues" element={<IssuesPage />} />  <Route path="/issues/new" element={<IssueForm />} /><Route path="/issues/:id/edit" element={<IssueForm />} /></Route></Route><Route path="*" element={<Navigate to="/" replace />} /></Routes></AuthProvider></BrowserRouter>;
 }
