@@ -82,6 +82,7 @@ MongoDB deployment.
 
 I used Code0's plan-first workflow: the agent first produced a plan with no code changes,
 I reviewed and approved it, and then it implemented one task at a time.
+I reviewed each generated diff and tested the features manually in the browser.
 
 ### Tasks where I used it
 
